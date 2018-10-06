@@ -56,8 +56,9 @@ class csv{
 class record{
 
     public function __construct(Array $fieldNames =null, $values = null){
-        
+
         $record = array_combine($fieldNames, $values);
+        $record = (object) $record;//typecasting
         print_r($record);
 
         $this->createProperty();
