@@ -45,7 +45,16 @@ class record{
 
     public function __construct(Array $record=null){
 
-        print_r($record);
+
+        $this->createProperty();
+
+        print_r($this);//this is internal ref to the object
+
+}
+
+public function createProperty($name = 'first',$value ='likhitha'){
+
+        $this->{$name} = $value;
 }
 
 
