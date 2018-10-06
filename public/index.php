@@ -58,10 +58,12 @@ class record{
     public function __construct(Array $fieldNames =null, $values = null){
 
         $record = array_combine($fieldNames, $values);
-        $record = (object) $record;//typecasting
-        print_r($record);
+        foreach ($record as $property => $value){
+            $this->createProperty($property, $value);
+        }
 
-        $this->createProperty();
+
+        print_r($this);
 
 }
 
