@@ -14,10 +14,13 @@ class main{
         $file = fopen("example.csv","r");
             while(! feof($file))
             {
-                print_r(fgetcsv($file));
+                $record = fgetcsv($file);
+
+                $records[]= $record;
             }
 
         fclose($file);
+            print_r($records);
 
 
     }
