@@ -56,9 +56,9 @@ class csv{
 class record{
 
     public function __construct(Array $fieldNames =null, $values = null){
-
-        print_r($fieldNames);
-        print_r($values);
+        
+        $record = array_combine($fieldNames, $values);
+        print_r($record);
 
         $this->createProperty();
 
@@ -76,8 +76,6 @@ public function createProperty($name = 'first',$value ='likhitha'){
 class recordFactory{
 
     public static function create(Array $fieldNames = null, $values = null){
-
-
 
         $record=new record($fieldNames, $values);
 
