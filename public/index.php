@@ -13,6 +13,8 @@ class main{
 
         $records = csv::getRecords($filename);
         $table = html::generateTable($records);
+        echo $table;
+
 
         }
 
@@ -20,26 +22,65 @@ class main{
 
 class html{
     public static function generateTable($records){
+
+        $html ='<html>';
+        $html .= head::getHead();
+        $html .= body::openBody();
+        $html .= table::openTable();
+
         $count=0;
         foreach ($records as $record){
             if($count ==0){
                 $array=$record->returnArray();
                 $fields= array_keys($array);
                 $values=array_values($array);
-                print_r($fields);
-                print_r($values);
+
+                while($count==0) {
+                    $html .= tableHead::openTablehead();
+                    $html .= createRow::openRow();
+                    $html .= tableData::forLoop($fields, 0);
+                    $html .= createRow::closeRow();
+                    $html .= tableHead::closeHead();
+
+                    $count++;
+
+                }
+                $html .= createRow::openRow();
+                $html .= tableData::forLoop($values,1);
+                $html .=createRow::closeRow();
+                $html .=table::closeBody();
+                $html .='</html>';
+
+                return $html;
+
             }
 
-            else{
-                $array=$record->returnArray();
-                $values=array_values($array);
-                print_r($values);
 
             }
-            $count++;
+
         }
     }
-}
+
+    class tableData{
+
+    }
+
+    class createRow{
+
+    }
+    class head{
+    
+    }
+    class body{
+
+    }
+    class table{
+
+    }
+
+    class tableHead{
+
+    }
 class csv{
 
     static public function getRecords($filename){
